@@ -32,6 +32,7 @@
         </tr>
     @endforelse
     </tbody>
+    <a href="/peliculas/create" class="btn btn-success mb-3">Agregar una nueva pelicula</a>
 </table>
 </body>
 </html>

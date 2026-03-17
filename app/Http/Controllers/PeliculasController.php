@@ -26,6 +26,6 @@ class PeliculasController extends Controller
         $pelicula->oscars_ganados = $request->input('oscars_ganados');
         $pelicula->save();
 
-        return redirect('/peliculas');
+        return redirect('/peliculas/index');
     }
 }
