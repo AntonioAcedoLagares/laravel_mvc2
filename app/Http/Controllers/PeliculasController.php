@@ -12,4 +12,9 @@ class PeliculasController extends Controller
 
         return view('peliculas.index',["peliculas"=>$peliculastodos]);
     }
+    public function create(){
+        return view('peliculas.create');
+    }
+
+
 }
