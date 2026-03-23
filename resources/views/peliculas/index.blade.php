@@ -16,6 +16,7 @@
         <th>Pais</th>
         <th>Nominaciones oscar</th>
         <th>Oscar ganados</th>
+        <th>Cositas</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,11 @@
             <td>{{ $pelicula->pais }}</td>
             <td>{{ $pelicula->nominaciones_oscar }}</td>
             <td>{{ $pelicula->oscars_ganados }} </td>
+            <td>
+                <a href="/peliculas/show/{{ $pelicula->id }}" class="btn btn-info btn-sm">Veure</a>
+                <a href="/peliculas/{{ $pelicula->id }}/destroy" class="btn btn-info btn-sm">Eliminar</a>
+                <a href="/peliculas/edit/{{ $pelicula->id }}" class="btn btn-info btn-sm">Editar</a>
+            </td>
         </tr>
     @empty
         <tr>
