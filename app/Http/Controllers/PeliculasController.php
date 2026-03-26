@@ -77,6 +77,12 @@ class PeliculasController extends Controller
         return view('peliculas.show', compact('pelicula'));
     }
 
+    public  function showPeliculasxActores(){
+        $peliculas = Pelicula::with('actores')->get();
+
+        return view('peliculas.peliculasxactores', compact('peliculas'));
+    }
+
     public function destroy($id)
     {
         $pelicula = \App\Models\Pelicula::findOrFail($id);

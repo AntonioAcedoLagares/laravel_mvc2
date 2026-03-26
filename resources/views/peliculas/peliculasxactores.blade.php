@@ -12,29 +12,25 @@
 <table class="table table-striped table-hover">
     <thead class="table-dark">
     <tr>
-        <th>Nombre</th>
-        <th>Fecha nacimiento</th>
-        <th>Pais</th>
-        <th>Numero de premios</th>
-        <th>Cositas</th>
+        <th>Pelicula</th>
+        <th>Actor</th>
     </tr>
     </thead>
     <tbody>
-    @forelse($actores as $actor)
+    @forelse($peliculas as $pelicula)
         <tr>
-            <td>{{ $actor->nombre }}</td>
-            <td>{{ $actor->pais }}</td>
-            <td>{{ $actor->fecha_nacimiento }}</td>
-            <td>{{ $actor->numero_premios }}</td>
+            <td>{{ $pelicula->titulo }}</td>
             <td>
-                <a href="/actores/show/{{ $actor->id }}" class="btn btn-info btn-sm">Veure</a>
-                <a href="/actores/{{ $actor->id }}/destroy" class="btn btn-info btn-sm">Eliminar</a>
-                <a href="/actores/edit/{{ $actor->id }}" class="btn btn-info btn-sm">Editar</a>
+            @forelse($pelicula->actores as $actor)
+                <ul>{{ $actor->nombre }}</ul>
+                @empty
+                       <p>No tiene actores</p>
+            @endforelse
             </td>
         </tr>
     @empty
         <tr>
-            <td colspan="4" class="text-center">No hi ha actores a la biblioteca.</td>
+            <td colspan="4" class="text-center">No hay nada.</td>
         </tr>
     @endforelse
     </tbody>
@@ -45,4 +41,3 @@
 </table>
 </body>
 </html>
-

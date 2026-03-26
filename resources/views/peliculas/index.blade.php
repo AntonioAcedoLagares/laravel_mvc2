@@ -40,6 +40,8 @@
     </tbody>
     <a href="/peliculas/create" class="btn btn-success mb-3">Agregar una nueva pelicula</a>
     <a href="/actores/index" class="btn btn-success mb-3">Ir a lista actores</a>
+    <a href="/peliculasxactores" class="btn btn-success mb-3">Ir a PeliculasxActores</a>
+    <a href="/actoresxpeliculas" class="btn btn-success mb-3">Ir a ActoresxPeliculas</a>
 </table>
 </body>
 </html>

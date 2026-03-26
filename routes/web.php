@@ -24,3 +24,7 @@ Route::get('/actores/create', [ActoresController::class, 'create']);
 Route::post('/actores/create', [ActoresController::class, 'store']);
 
 Route::get('/actores/{id}/destroy', [ActoresController::class, 'delete']);
+
+route::get('peliculasxactores',[PeliculasController::class, 'showPeliculasxActores']);
+
+route::get('actoresxpeliculas',[ActoresController::class, 'actoresxpelicula']);

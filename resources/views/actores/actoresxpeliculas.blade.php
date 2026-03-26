@@ -12,29 +12,25 @@
 <table class="table table-striped table-hover">
     <thead class="table-dark">
     <tr>
-        <th>Nombre</th>
-        <th>Fecha nacimiento</th>
-        <th>Pais</th>
-        <th>Numero de premios</th>
-        <th>Cositas</th>
+        <th>Actor</th>
+        <th>Pelicula</th>
     </tr>
     </thead>
     <tbody>
     @forelse($actores as $actor)
         <tr>
             <td>{{ $actor->nombre }}</td>
-            <td>{{ $actor->pais }}</td>
-            <td>{{ $actor->fecha_nacimiento }}</td>
-            <td>{{ $actor->numero_premios }}</td>
             <td>
-                <a href="/actores/show/{{ $actor->id }}" class="btn btn-info btn-sm">Veure</a>
-                <a href="/actores/{{ $actor->id }}/destroy" class="btn btn-info btn-sm">Eliminar</a>
-                <a href="/actores/edit/{{ $actor->id }}" class="btn btn-info btn-sm">Editar</a>
+                @forelse($actor->peliculas as $pelicula)
+                    <a class="btn btn-outline-primary" href="/peliculas/show/{{$pelicula->id}}">{{ $pelicula->titulo }}</a>
+                    @empty
+                        <p>No tiene peliculas</p>
+                @endforelse
             </td>
         </tr>
     @empty
         <tr>
-            <td colspan="4" class="text-center">No hi ha actores a la biblioteca.</td>
+            <td colspan="4" class="text-center">No hay nada.</td>
         </tr>
     @endforelse
     </tbody>
