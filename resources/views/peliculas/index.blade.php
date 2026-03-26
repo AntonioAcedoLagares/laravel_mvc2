@@ -34,11 +34,12 @@
         </tr>
     @empty
         <tr>
-            <td colspan="4" class="text-center">No hi ha llibres a la biblioteca.</td>
+            <td colspan="4" class="text-center">No hi ha pelicules a la biblioteca.</td>
         </tr>
     @endforelse
     </tbody>
     <a href="/peliculas/create" class="btn btn-success mb-3">Agregar una nueva pelicula</a>
+    <a href="/actores/index" class="btn btn-success mb-3">Ir a lista actores</a>
 </table>
 </body>
 </html>

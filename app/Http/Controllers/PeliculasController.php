@@ -13,16 +13,19 @@ class PeliculasController extends Controller
         return view('peliculas.index',["peliculas"=>$peliculastodos]);
     }
     public function create(){
-        return view('peliculas.create');
+        $actores = \App\Models\Actor::all();
+        return view('peliculas.create', compact('actores'));
     }
     public function edit($id){
-        $pelicula_singular = \App\Models\Pelicula::findOrFail($id);
-        return view('peliculas.edit', ["pelicula"=>$pelicula_singular]);
+        $pelicula_singular = \App\Models\Pelicula::with('actores')->findOrFail($id);
+        $actores = \App\Models\Actor::all();
+        return view('peliculas.edit', ["pelicula"=>$pelicula_singular,"actores"=>$actores]);
     }
 
     public function update(\Illuminate\Http\Request $request, $id)
     {
-        $pelicula =  \App\Models\Pelicula::findOrFail($id);
+        $pelicula =  \App\Models\Pelicula::with('actores')->findOrFail($id);
+
         $pelicula->titulo = $request->input('titulo');
         $pelicula->pais = $request->input('pais');
         $pelicula->start_date = $request->input('start_date');
@@ -36,6 +39,11 @@ class PeliculasController extends Controller
             $pelicula->imatge = $nomImatge;
         }
         $pelicula->save();
+        if($request->has('actores_ids')){
+            $pelicula->actores()->sync($request->input('actores_ids',[]));
+        }else{
+            $pelicula->actores()->detach();
+        }
         return redirect('/peliculas/index');
     }
     public function store(\Illuminate\Http\Request $request){
@@ -56,12 +64,16 @@ class PeliculasController extends Controller
 
         $pelicula->save();
 
+        if($request->has('actores_ids')){
+            $pelicula->actores()->attach($request->input('actores_ids'));
+        }
+
         return redirect('/peliculas/index');
     }
     public function show($id)
     {
         // Busquem el llibre pel seu ID. Si no existeix, donarà un error 404.
-        $pelicula = \App\Models\Pelicula::findOrFail($id);
+        $pelicula = \App\Models\Pelicula::with('actores')->findOrFail($id);
         return view('peliculas.show', compact('pelicula'));
     }
 

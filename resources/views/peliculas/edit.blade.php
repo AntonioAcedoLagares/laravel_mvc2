@@ -20,7 +20,23 @@
             <label class="form-label">Pais</label>
             <input type="text" name="pais" class="form-control" value="{{ $pelicula->pais }}">
         </div>
-
+        <div class="mb-3">
+            <label class="form-label">Selecciona els actores:</label>
+            <select name="actores_ids[]" class="form-select" multiple>
+                @foreach($actores as $actor)
+                    @if ($pelicula->actores->contains('id',$actor->id))
+                    <option value="{{$actor->id}}" selected >
+                        {{$actor->nombre}}
+                    </option>
+                    @else
+                        <option value="{{$actor->id}}" >
+                            {{$actor->nombre}}
+                        </option>
+                    @endif
+                @endforeach
+            </select>
+            <small class="text-muted">Manten el ctrl para selecionar mas</small>
+        </div>
         <div class="mb-3">
             <label class="form-label">Start Date</label>
             <input type="date" name="start_date" class="form-control" value="{{ $pelicula->start_date }}">

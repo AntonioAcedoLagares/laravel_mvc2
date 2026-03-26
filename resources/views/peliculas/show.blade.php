@@ -23,6 +23,12 @@
             <p><strong>Fecha de estreno:</strong> {{ $pelicula->start_date }}</p>
             <p><strong>Nominaciones al oscar:</strong> {{ $pelicula->nominaciones_oscar }} </p>
             <p><strong>Oscar ganados:</strong> {{ $pelicula->oscars_ganados }} </p>
+            <p><strong>Actores:</strong></p>
+            <ul>
+                @foreach($pelicula->actores as $actor)
+                    <li>{{ $actor->nombre }}</li>
+                @endforeach
+            </ul>
             <a href="/peliculas/index" class="btn btn-secondary">Tornar</a>
         </div>
     </div>

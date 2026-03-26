@@ -25,6 +25,16 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Selecciona els actores:</label>
+            <select name="actores_ids[]" class="form-select" multiple>
+                @foreach($actores as $actor)
+                    <option value="{{$actor->id}}">{{$actor->nombre}}</option>
+                @endforeach
+            </select>
+            <small class="text-muted">Manten el ctrl para selecionar mas</small>
+        </div>
+
+        <div class="mb-3">
             <label class="form-label">Nominaciones al oscar</label>
             <input type="number" step="1" name="nominaciones_oscar" class="form-control">
         </div>
